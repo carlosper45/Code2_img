@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import Radio from './components/Radio';
+
 const title = 'Sing Up Form';
 const explanation = 'Please enter below all the required fields.';
 
@@ -12,21 +14,6 @@ function generateURL(width, height, category, filter) {
         : ''
 
     return `${BASE_URL}/${width}/${height}/${category}${maybeFilter}`;
-}
-
-function Radio(props) {
-    return (
-        <label>
-            <input
-                type="radio"
-                name={props.group}
-                value={props.value}
-                checked={props.checked}
-                onChange={props.onChange}
-            />
-            {props.children}
-        </label>
-    )
 }
 
 class SignUpForm extends React.Component {
