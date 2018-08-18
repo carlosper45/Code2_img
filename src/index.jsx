@@ -82,7 +82,7 @@ class SignUpForm extends React.Component {
                     <option value="tech">Tech</option>
                 </select>
 
-                <div id="filter">
+                <div>
                     <label>
                         <input
                             type="radio"
