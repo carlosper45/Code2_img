@@ -6,6 +6,14 @@ const explanation = 'Please enter below all the required fields.';
 
 const BASE_URL = "https://placeimg.com";
 
+function generateURL(width, height, category, filter) {
+    const maybeFilter = filter !== "undefined"
+        ?  `/${filter}`
+        : ''
+
+    return `${BASE_URL}/${width}/${height}/${category}${maybeFilter}`;
+}
+
 class SignUpForm extends React.Component {
     constructor(props) {
         super(props)
@@ -36,16 +44,8 @@ class SignUpForm extends React.Component {
         }
     }
 
-    generateURL(width, height, category, filter) {
-        const maybeFilter = filter !== "undefined"
-            ?  `/${filter}`
-            : ''
-
-        return `${BASE_URL}/${width}/${height}/${category}${maybeFilter}`;
-    }
-
     render() {
-        const url = this.generateURL(
+        const url = generateURL(
             this.state.width,
             this.state.height,
             this.state.category,
