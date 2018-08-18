@@ -4,6 +4,8 @@ import ReactDOM from 'react-dom';
 const title = 'Sing Up Form';
 const explanation = 'Please enter below all the required fields.';
 
+const BASE_URL = "https://placeimg.com";
+
 class SignUpForm extends React.Component {
     constructor(props) {
         super(props)
@@ -35,11 +37,11 @@ class SignUpForm extends React.Component {
     }
 
     generateURL(width, height, category, filter) {
-        if (filter === "undefined") {
-            return `https://placeimg.com/${width}/${height}/${category}`;
-        } else {
-            return `https://placeimg.com/${width}/${height}/${category}/${filter}`;
-        }
+        const maybeFilter = filter !== "undefined"
+            ?  `/${filter}`
+            : ''
+
+        return `${BASE_URL}/${width}/${height}/${category}${maybeFilter}`;
     }
 
     render() {
