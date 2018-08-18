@@ -14,6 +14,21 @@ function generateURL(width, height, category, filter) {
     return `${BASE_URL}/${width}/${height}/${category}${maybeFilter}`;
 }
 
+function Radio(props) {
+    return (
+        <label>
+            <input
+                type="radio"
+                name={props.group}
+                value={props.value}
+                checked={props.checked}
+                onChange={props.onChange}
+            />
+            {props.children}
+        </label>
+    )
+}
+
 class SignUpForm extends React.Component {
     constructor(props) {
         super(props)
@@ -83,38 +98,32 @@ class SignUpForm extends React.Component {
                 </select>
 
                 <div>
-                    <label>
-                        <input
-                            type="radio"
-                            name="filter"
-                            value="no-filter"
-                            checked={this.state.filter === null}
-                            onChange={this.handleFilterChange.bind(this)}
-                        />
+                    <Radio
+                        group="filter"
+                        value="no-filter"
+                        checked={this.state.filter === null}
+                        onChange={this.handleFilterChange.bind(this)}
+                    >
                         No filter
-                    </label>
+                    </Radio>
 
-                    <label>
-                        <input
-                            type="radio"
-                            name="filter"
-                            value="grayscale"
-                            checked={this.state.filter === "grayscale"}
-                            onChange={this.handleFilterChange.bind(this)}
-                        />
+                    <Radio
+                        group="filter"
+                        value="grayscale"
+                        checked={this.state.filter === "grayscale"}
+                        onChange={this.handleFilterChange.bind(this)}
+                    >
                         Grayscale
-                    </label>
+                    </Radio>
 
-                    <label>
-                        <input
-                            type="radio"
-                            name="filter"
-                            value="sepia"
-                            checked={this.state.filter === "sepia"}
-                            onChange={this.handleFilterChange.bind(this)}
-                        />
+                    <Radio
+                        group="filter"
+                        value="sepia"
+                        checked={this.state.filter === "sepia"}
+                        onChange={this.handleFilterChange.bind(this)}
+                    >
                         Sepia
-                    </label>
+                    </Radio>
                 </div>
 
                 <img src={url} />
