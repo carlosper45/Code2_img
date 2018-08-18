@@ -35,23 +35,25 @@ class App extends React.Component {
     }
 
     render() {
+        const { width, height, category, filter } = this.state
+
         return (
             <div>
                 <input
                     type="number"
                     onChange={this.handleWidthChange}
-                    value={this.state.width}
+                    value={width}
                 />
                 <input
                     type="number"
                     onChange={this.handleHeightChange}
-                    value={this.state.height}
+                    value={height}
                 />
 
                 <select
                     name="category"
                     onChange={this.handleCategoryChange}
-                    value={this.state.category}
+                    value={category}
                 >
                     <option value="any">Any</option>
                     <option value="animals">Animals</option>
@@ -65,7 +67,7 @@ class App extends React.Component {
                     <Radio
                         group="filter"
                         value="no-filter"
-                        checked={this.state.filter === null}
+                        checked={filter === null}
                         onChange={this.handleFilterChange}
                     >
                         No filter
@@ -74,7 +76,7 @@ class App extends React.Component {
                     <Radio
                         group="filter"
                         value="grayscale"
-                        checked={this.state.filter === "grayscale"}
+                        checked={filter === "grayscale"}
                         onChange={this.handleFilterChange}
                     >
                         Grayscale
@@ -83,7 +85,7 @@ class App extends React.Component {
                     <Radio
                         group="filter"
                         value="sepia"
-                        checked={this.state.filter === "sepia"}
+                        checked={filter === "sepia"}
                         onChange={this.handleFilterChange}
                     >
                         Sepia
@@ -91,10 +93,10 @@ class App extends React.Component {
                 </div>
 
                 <PlaceholderImage
-                    width={this.state.width}
-                    height={this.state.height}
-                    category={this.state.category}
-                    filter={this.state.filter}
+                    width={width}
+                    height={height}
+                    category={category}
+                    filter={filter}
                 />
             </div>
         );

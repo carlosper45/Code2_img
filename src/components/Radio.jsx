@@ -1,16 +1,16 @@
 import React from 'react';
 
-export default function Radio(props) {
+export default function Radio({ group, value, checked, onChange, children }) {
     return (
         <label>
             <input
                 type="radio"
-                name={props.group}
-                value={props.value}
-                checked={props.checked}
-                onChange={props.onChange}
+                name={group}
+                value={value}
+                checked={checked}
+                onChange={onChange}
             />
-            {props.children}
+            {children}
         </label>
     )
 }
