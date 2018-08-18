@@ -59,7 +59,7 @@ class SignUpForm extends React.Component {
                 ? null
                 : e.target.value
 
-            this.setState({ filter: filter });
+            this.setState({ filter });
         }
     }
 
