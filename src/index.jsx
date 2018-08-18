@@ -7,7 +7,7 @@ const explanation = 'Please enter below all the required fields.';
 const BASE_URL = "https://placeimg.com";
 
 function generateURL(width, height, category, filter) {
-    const maybeFilter = filter !== "undefined"
+    const maybeFilter = filter !== null
         ?  `/${filter}`
         : ''
 
@@ -22,7 +22,7 @@ class SignUpForm extends React.Component {
             width: 480,
             height: 640,
             category: "any",
-            filter: "undefined"
+            filter: null
         }
     }
 
@@ -40,7 +40,11 @@ class SignUpForm extends React.Component {
 
     handleFilterChange(e) {
         if (e.target.checked) {
-            this.setState({ filter: e.target.value });
+            const filter = e.target.value === "no-filter"
+                ? null
+                : e.target.value
+
+            this.setState({ filter: filter });
         }
     }
 
@@ -83,8 +87,8 @@ class SignUpForm extends React.Component {
                         <input
                             type="radio"
                             name="filter"
-                            value="undefined"
-                            checked={this.state.filter === "undefined"}
+                            value="no-filter"
+                            checked={this.state.filter === null}
                             onChange={this.handleFilterChange.bind(this)}
                         />
                         No filter
