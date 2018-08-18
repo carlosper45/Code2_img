@@ -35,7 +35,7 @@ class SignUpForm extends React.Component {
     }
 
     generateURL(width, height, category, filter) {
-        if (filter==="undefined") {
+        if (filter === "undefined") {
             return `https://placeimg.com/${width}/${height}/${category}`;
         } else {
             return `https://placeimg.com/${width}/${height}/${category}/${filter}`;
@@ -82,7 +82,7 @@ class SignUpForm extends React.Component {
                             type="radio"
                             name="filter"
                             value="undefined"
-                            checked={this.state.filter==="undefined"}
+                            checked={this.state.filter === "undefined"}
                             onChange={this.handleFilterChange.bind(this)}
                         />
                         No filter
@@ -93,7 +93,7 @@ class SignUpForm extends React.Component {
                             type="radio"
                             name="filter"
                             value="grayscale"
-                            checked={this.state.filter==="grayscale"}
+                            checked={this.state.filter === "grayscale"}
                             onChange={this.handleFilterChange.bind(this)}
                         />
                         Grayscale
@@ -104,7 +104,7 @@ class SignUpForm extends React.Component {
                             type="radio"
                             name="filter"
                             value="sepia"
-                            checked={this.state.filter==="sepia"}
+                            checked={this.state.filter === "sepia"}
                             onChange={this.handleFilterChange.bind(this)}
                         />
                         Sepia
