@@ -4,10 +4,7 @@ import ReactDOM from 'react-dom';
 import Radio from './components/Radio';
 import PlaceholderImage from './components/PlaceholderImage';
 
-const title = 'Sing Up Form';
-const explanation = 'Please enter below all the required fields.';
-
-class SignUpForm extends React.Component {
+class App extends React.Component {
     state = {
         width: 480,
         height: 640,
@@ -105,6 +102,6 @@ class SignUpForm extends React.Component {
 }
 
 ReactDOM.render (
-    <SignUpForm />,
+    <App />,
     document.getElementById('app')
 );
