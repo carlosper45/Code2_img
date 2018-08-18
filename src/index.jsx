@@ -33,6 +33,11 @@ class SignUpForm extends React.Component {
     constructor(props) {
         super(props)
 
+        this.handleWidthChange = this.handleWidthChange.bind(this)
+        this.handleHeightChange = this.handleHeightChange.bind(this)
+        this.handleCategoryChange = this.handleCategoryChange.bind(this)
+        this.handleFilterChange = this.handleFilterChange.bind(this)
+
         this.state = {
             width: 480,
             height: 640,
@@ -75,18 +80,18 @@ class SignUpForm extends React.Component {
             <div>
                 <input
                     type="number"
-                    onChange={this.handleWidthChange.bind(this)}
+                    onChange={this.handleWidthChange}
                     value={this.state.width}
                 />
                 <input
                     type="number"
-                    onChange={this.handleHeightChange.bind(this)}
+                    onChange={this.handleHeightChange}
                     value={this.state.height}
                 />
 
                 <select
                     name="category"
-                    onChange={this.handleCategoryChange.bind(this)}
+                    onChange={this.handleCategoryChange}
                     value={this.state.category}
                 >
                     <option value="any">Any</option>
@@ -102,7 +107,7 @@ class SignUpForm extends React.Component {
                         group="filter"
                         value="no-filter"
                         checked={this.state.filter === null}
-                        onChange={this.handleFilterChange.bind(this)}
+                        onChange={this.handleFilterChange}
                     >
                         No filter
                     </Radio>
@@ -111,7 +116,7 @@ class SignUpForm extends React.Component {
                         group="filter"
                         value="grayscale"
                         checked={this.state.filter === "grayscale"}
-                        onChange={this.handleFilterChange.bind(this)}
+                        onChange={this.handleFilterChange}
                     >
                         Grayscale
                     </Radio>
@@ -120,7 +125,7 @@ class SignUpForm extends React.Component {
                         group="filter"
                         value="sepia"
                         checked={this.state.filter === "sepia"}
-                        onChange={this.handleFilterChange.bind(this)}
+                        onChange={this.handleFilterChange}
                     >
                         Sepia
                     </Radio>
