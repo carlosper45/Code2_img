@@ -7,6 +7,7 @@ const explanation = 'Please enter below all the required fields.';
 class SignUpForm extends React.Component {
     constructor(props) {
         super(props)
+
         this.state = {
             width: 480,
             height: 640,
@@ -15,13 +16,21 @@ class SignUpForm extends React.Component {
         }
     }
 
-    handleWidthChange (e) {this.setState({width: e.target.value})}
-    handleHeightChange (e) {this.setState({height: e.target.value})}
-    handleCategoryChange (e) {this.setState({category: e.target.value})}
+    handleWidthChange (e) {
+        this.setState({ width: e.target.value });
+    }
+
+    handleHeightChange (e) {
+        this.setState({ height: e.target.value });
+    }
+
+    handleCategoryChange (e) {
+        this.setState({ category: e.target.value });
+    }
 
     handleFilterChange(e) {
         if (e.target.checked) {
-            this.setState({filter: e.target.value})
+            this.setState({ filter: e.target.value });
         }
     }
 
@@ -32,19 +41,15 @@ class SignUpForm extends React.Component {
             return `https://placeimg.com/${width}/${height}/${category}/${filter}`;
         }
     }
- 
-    render() {
 
+    render() {
         const url = this.generateURL(this.state.width, this.state.height, this.state.category, this.state.filter);
 
         return (
             <div>
-
-                
-
                 <input type="number" onChange={this.handleWidthChange.bind(this)} value={this.state.width}/>
                 <input type="number" onChange={this.handleHeightChange.bind(this)} value={this.state.height}/>
-                
+
                 <select name="category" onChange={this.handleCategoryChange.bind(this)} value={this.state.category}>
                     <option value="any">Any</option>
                     <option value="animals">Animals</option>
