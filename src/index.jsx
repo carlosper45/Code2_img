@@ -1,35 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const title = 'Sing Up Form';
-const explanation = 'Please enter below all the required fields.';
+import Radio from './components/Radio';
+import PlaceholderImage from './components/PlaceholderImage';
 
-const BASE_URL = "https://placeimg.com";
-
-function generateURL(width, height, category, filter) {
-    const maybeFilter = filter !== null
-        ?  `/${filter}`
-        : ''
-
-    return `${BASE_URL}/${width}/${height}/${category}${maybeFilter}`;
-}
-
-function Radio(props) {
-    return (
-        <label>
-            <input
-                type="radio"
-                name={props.group}
-                value={props.value}
-                checked={props.checked}
-                onChange={props.onChange}
-            />
-            {props.children}
-        </label>
-    )
-}
-
-class SignUpForm extends React.Component {
+class App extends React.Component {
     state = {
         width: 480,
         height: 640,
@@ -60,30 +35,25 @@ class SignUpForm extends React.Component {
     }
 
     render() {
-        const url = generateURL(
-            this.state.width,
-            this.state.height,
-            this.state.category,
-            this.state.filter
-        );
+        const { width, height, category, filter } = this.state
 
         return (
             <div>
                 <input
                     type="number"
                     onChange={this.handleWidthChange}
-                    value={this.state.width}
+                    value={width}
                 />
                 <input
                     type="number"
                     onChange={this.handleHeightChange}
-                    value={this.state.height}
+                    value={height}
                 />
 
                 <select
                     name="category"
                     onChange={this.handleCategoryChange}
-                    value={this.state.category}
+                    value={category}
                 >
                     <option value="any">Any</option>
                     <option value="animals">Animals</option>
@@ -97,7 +67,7 @@ class SignUpForm extends React.Component {
                     <Radio
                         group="filter"
                         value="no-filter"
-                        checked={this.state.filter === null}
+                        checked={filter === null}
                         onChange={this.handleFilterChange}
                     >
                         No filter
@@ -106,7 +76,7 @@ class SignUpForm extends React.Component {
                     <Radio
                         group="filter"
                         value="grayscale"
-                        checked={this.state.filter === "grayscale"}
+                        checked={filter === "grayscale"}
                         onChange={this.handleFilterChange}
                     >
                         Grayscale
@@ -115,21 +85,25 @@ class SignUpForm extends React.Component {
                     <Radio
                         group="filter"
                         value="sepia"
-                        checked={this.state.filter === "sepia"}
+                        checked={filter === "sepia"}
                         onChange={this.handleFilterChange}
                     >
                         Sepia
                     </Radio>
                 </div>
 
-                <img src={url} />
-                <div>{url}</div>
+                <PlaceholderImage
+                    width={width}
+                    height={height}
+                    category={category}
+                    filter={filter}
+                />
             </div>
         );
     }
 }
 
 ReactDOM.render (
-    <SignUpForm />,
+    <App />,
     document.getElementById('app')
 );
