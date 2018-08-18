@@ -30,35 +30,26 @@ function Radio(props) {
 }
 
 class SignUpForm extends React.Component {
-    constructor(props) {
-        super(props)
-
-        this.handleWidthChange = this.handleWidthChange.bind(this)
-        this.handleHeightChange = this.handleHeightChange.bind(this)
-        this.handleCategoryChange = this.handleCategoryChange.bind(this)
-        this.handleFilterChange = this.handleFilterChange.bind(this)
-
-        this.state = {
-            width: 480,
-            height: 640,
-            category: "any",
-            filter: null
-        }
+    state = {
+        width: 480,
+        height: 640,
+        category: "any",
+        filter: null
     }
 
-    handleWidthChange (e) {
+    handleWidthChange = (e) => {
         this.setState({ width: e.target.value });
     }
 
-    handleHeightChange (e) {
+    handleHeightChange = (e) => {
         this.setState({ height: e.target.value });
     }
 
-    handleCategoryChange (e) {
+    handleCategoryChange = (e) => {
         this.setState({ category: e.target.value });
     }
 
-    handleFilterChange(e) {
+    handleFilterChange = (e) => {
         if (e.target.checked) {
             const filter = e.target.value === "no-filter"
                 ? null
