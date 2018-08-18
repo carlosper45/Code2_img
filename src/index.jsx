@@ -2,19 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import Radio from './components/Radio';
+import PlaceholderImage from './components/PlaceholderImage';
 
 const title = 'Sing Up Form';
 const explanation = 'Please enter below all the required fields.';
-
-const BASE_URL = "https://placeimg.com";
-
-function generateURL(width, height, category, filter) {
-    const maybeFilter = filter !== null
-        ?  `/${filter}`
-        : ''
-
-    return `${BASE_URL}/${width}/${height}/${category}${maybeFilter}`;
-}
 
 class SignUpForm extends React.Component {
     state = {
@@ -47,13 +38,6 @@ class SignUpForm extends React.Component {
     }
 
     render() {
-        const url = generateURL(
-            this.state.width,
-            this.state.height,
-            this.state.category,
-            this.state.filter
-        );
-
         return (
             <div>
                 <input
@@ -109,8 +93,12 @@ class SignUpForm extends React.Component {
                     </Radio>
                 </div>
 
-                <img src={url} />
-                <div>{url}</div>
+                <PlaceholderImage
+                    width={this.state.width}
+                    height={this.state.height}
+                    category={this.state.category}
+                    filter={this.state.filter}
+                />
             </div>
         );
     }
